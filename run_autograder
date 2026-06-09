@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+cp /autograder/submission/region.py /autograder/source/region.py
+
+cd /autograder/source || exit
+
+python3 run_test.py

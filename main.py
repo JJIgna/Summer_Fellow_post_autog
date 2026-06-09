@@ -1,6 +1,7 @@
 # test file
 import psycopg
 from psycopg.rows import dict_row
+from region import Region
 
 # python itself, if this doesn't work something has gone horribly wrong
 print("Python Test")
@@ -20,4 +21,6 @@ with psycopg.connect("postgres://jjigna23:jjigna23@hopper01.hpc.stlawu.edu:5432/
         """)
 
         print(cur.fetchall())
+
+print(Region())
 

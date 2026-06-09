@@ -7,7 +7,7 @@
 FROM gradescope/autograder-base:ubuntu-22.04
 
 # base directory
-WORKDIR /src/
+WORKDIR /autograder/source
 
 # python
 RUN apt-get install -y python3 python3-pip
@@ -22,6 +22,7 @@ COPY pgdg.sources /etc/apt/sources.list.d/
 RUN apt update
 RUN apt install -y postgresql-client-18
 
-# add testing for image build
-WORKDIR test_build
-COPY main.py ./
+# copy autograder files
+COPY run_autograder /autograder/run_autograder
+COPY run_test.py /autograder/source
+COPY tests /autograder/source/tests
