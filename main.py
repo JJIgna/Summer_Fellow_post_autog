@@ -13,7 +13,7 @@ print(psycopg.__version__)
 
 # postgresql through psycopg
 print("Postgresql Through Psycopg Test")
-with psycopg.connect("postgres://jjigna23:jjigna23@hopper01.hpc.stlawu.edu:5432/spp_book") as conn:
+with psycopg.connect("postgres://jjigna23:g0ldh3art@hopper01.hpc.stlawu.edu:5432/spp_book") as conn:
     with conn.cursor(row_factory=dict_row) as cur:
         cur.execute("""
             select distinct country
