@@ -1,6 +1,6 @@
 import unittest
 from gradescope_utils.autograder_utils.decorators import weight, number
-from region import region
+from testing_features.region import region
 # key is a dictionary containing the correct query outputs
 from gold import key
 

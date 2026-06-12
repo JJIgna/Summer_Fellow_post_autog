@@ -1,8 +1,8 @@
 """
 Query Parse:
     function for parsing an .sql containing multiple queries into separate queries
-
-    current implementation: generator
+parameters : path - path to .sql file to be parsed
+returns : this function is a generator. calling .__next__() will give the next query 
 """
 
 
