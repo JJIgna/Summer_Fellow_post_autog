@@ -1,3 +1,6 @@
+# core version of run_test.py
+# neither file should change anytime soon
+
 import unittest
 from gradescope_utils.autograder_utils.json_test_runner import JSONTestRunner
 
