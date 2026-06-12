@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 
-cp /autograder/submission/region.py /autograder/source/region.py
+su - postgres -c 'pg_ctlcluster 18 main start'
+su - postgres -c 'psql -U postgres -f /autograder/source/dbset.sql'
 
-cd /autograder/source || exit
+cp /autograder/submission/many.sql /autograder/source/many.sql
+
+cd /autograder/source
 
 python3 run_test.py

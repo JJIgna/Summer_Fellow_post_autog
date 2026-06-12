@@ -20,9 +20,11 @@ RUN install -d /usr/share/postgresql-common/pgdg
 RUN curl -o /usr/share/postgresql-common/pgdg/apt.postgresql.org.asc --fail https://www.postgresql.org/media/keys/ACCC4CF8.asc
 COPY pgdg.sources /etc/apt/sources.list.d/
 RUN apt update
-RUN apt install -y postgresql-client-18
+RUN apt install -y postgresql-18
 
 # copy autograder files
 COPY run_autograder /autograder/run_autograder
-COPY run_test.py /autograder/source
+COPY source /autograder/source
 COPY tests /autograder/source/tests
+
+
