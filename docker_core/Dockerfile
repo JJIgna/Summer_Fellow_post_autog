@@ -33,6 +33,8 @@ COPY --chmod=0600 .pgpass /root/
 
 ENV HW_NAME="part.sql"
 ENV GOLD_FILE="gold.sql"
+ENV SOL_NUM="8"
+#   number of solutions in gold file
 ENV DB_URL="postgresql://testee:pass@localhost/testee"
 ENV DB_SETUP="dbsetup.sql"
 ENV DB_BUILD="build"

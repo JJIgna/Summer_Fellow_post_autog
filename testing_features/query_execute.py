@@ -8,7 +8,7 @@ returns: this function is a generator. calling .__next__() will execute the next
 
 import psycopg
 from psycopg.rows import dict_row
-from test_kit.query_parse import query_parse
+from testing_features.query_parse import query_parse
 import os
 
 def run_queries(path):
