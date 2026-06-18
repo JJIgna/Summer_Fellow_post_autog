@@ -1,7 +1,7 @@
 import psycopg
 from psycopg.rows import dict_row
 import os
-from templates.test_kit.wrong_number import IncorrectQueryAmountError
+from test_kit.wrong_number import IncorrectQueryAmountError
 
 # Query Taker class
 #   used when testing .sql files or when using .sql files

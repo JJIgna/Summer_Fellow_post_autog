@@ -6,7 +6,7 @@ This is what the testing file(s) will look like
 # imports
 import unittest
 from gradescope_utils.autograder_utils.decorators import weight, number, visibility
-from templates.test_kit import QueryTaker
+from test_kit import QueryTaker
 import os
 import timeout_decorator
 

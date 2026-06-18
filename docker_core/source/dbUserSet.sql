@@ -1,5 +1,5 @@
 /*
- * This is a sample dbsetup.sql file.
+ * This is a sample dbUserSet.sql file.
  * This exists to set up the db users needed for the HW's context.
  * In this case, testee is just made to give the university db somewhere to go.
  * This is done to get around the fact that the default postgres user uses peer authentication in Linux

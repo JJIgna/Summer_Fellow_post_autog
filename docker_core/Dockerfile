@@ -35,15 +35,21 @@ COPY --chmod=0600 .pgpass /root/
 # These varibles are call in places where they are needed
 # This means they only need to be set here
 
-ENV HW_NAME="part.sql"
-ENV GOLD_FILE="gold.sql"
+ENV HW_NAME="make.sql"
+ENV GOLD_FILE="goldC.sql"
+
 # number of HW solutions or number of problems
 ENV SOL_NUM="8"
+
 # URL to the database that will be access for the HW
-ENV DB_URL="postgresql://testee:pass@localhost/testee"
-ENV DB_SETUP="dbsetup.sql"
+ENV DB_URL="postgresql://testee@localhost/vehicle"
+
+# .sql file that sets up a defualt user
+ENV DB_USER_SET="dbUserSet.sql"
+
 # this is the name of the file that is given to pg_restore
-ENV DB_BUILD="build"
+# set to "" to disable automatic DB building
+ENV DB_BUILD=""
 
 # copy autograder files
 COPY run_autograder /autograder/run_autograder
@@ -53,8 +59,8 @@ COPY run_autograder /autograder/run_autograder
 COPY source /autograder/source
 #   soucre contains all files and directories that need to be in
 #   /autograder/source. These are:
-#                           gold file (is needed)
-#                           dbsetup.sql
+#                           goldQ.sql
+#                           dbUserSet.sql
 #                           run_test.py
 
 COPY tests /autograder/source/tests

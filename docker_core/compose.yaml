@@ -1,0 +1,6 @@
+services:
+  native:
+    image: leviaj/pysco_autog:create
+    volumes:
+      - C:\Users\jjign\summerfellow_26\sub:/autograder/submission
+      - C:\Users\jjign\summerfellow_26\res:/autograder/results
