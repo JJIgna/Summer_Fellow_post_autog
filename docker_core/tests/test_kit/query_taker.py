@@ -56,7 +56,7 @@ class QueryTaker:
         self.num += 1
         yield ''.join(buff)
 
-    def execute(self):
+    def execute_query(self):
         url = os.getenv('DB_URL')
 
         # establish connection
@@ -66,7 +66,20 @@ class QueryTaker:
                     cur.execute(self.run.__next__())
                     return cur.fetchall()
 
-    def next_query(self):
+    def execute_manage(self):
+        url = os.getenv('DB_URL')
+
+        # establish connection
+        with psycopg.connect(url) as conn:
+            with conn.cursor(row_factory=dict_row) as cur:
+                # run query
+                    cur.execute(self.run.__next__())
+
+    def next_query(self, manage=False):
         if self.done:
             raise IncorrectQueryAmountError(os.getenv('SOL_NUM'),str(self.num))
-        return self.execute()
+        if not manage:
+            return self.execute_query()
+        else:
+            self.execute_manage()
+        return True

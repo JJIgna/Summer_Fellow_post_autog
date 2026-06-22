@@ -7,9 +7,15 @@
 #   (may move to its own file later)
 su - postgres -c 'pg_ctlcluster 18 main start'
 su - postgres -c "psql -U postgres -f /autograder/source/$DB_USER_SET"
-#if [ "$BD_BUILD" != "" ]; then
-#    pg_restore -U testee -h localhost -d testee -O /autograder/source/"$DB_BUILD"
-#fi
+
+if [ "$DB_BUILD" != "" ]; then
+    pg_restore -U testee -h localhost -d testee -O /autograder/source/"$DB_BUILD"
+fi
+
+if [ "$PRIV_SET" != "" ]; then
+    pg_restore -U testee -h localhost -d testee -O /autograder/source/"$PRIV_SET"
+fi
+
 # move assignment file into source so it is accessible by run_test
 cp /autograder/submission/"$HW_NAME" /autograder/source/"$HW_NAME"
 

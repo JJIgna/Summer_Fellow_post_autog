@@ -13,13 +13,13 @@ First we have the imports. These are very self explanatory.
     Gradescope autograder utils
         This is a set of helpful functions and decorators made by gradescope to be used with 
         their autograder
-    Test.kit - custom code for testing queries
-        This assists in parsing and executing queries
+    Test.kit - custom code for testing Read
+        This assists in parsing and executing Read
         QueryTaker is the class used to parse and execute
     os 
         this is used to get environment values made by the Dockerfile
     timeout_decorator
-        used to timeout queries 
+        used to timeout Read 
 """
 
 # imports
@@ -49,6 +49,9 @@ class TestCaseName(unittest.TestCase):
 # CALL GOLD FILE BEFORE STUDENT FILE
 # ERROR IN STUDENT FILE MAY CAUSE DESYNC FROM GOLD FILE
 
+# TESTS ARE RAN IN ALPHABETICAL ORDER NOT ORDER THEY ARE DEFINED
+# THIS WILL AFFECT GRADING AS QUERIES FROM .sql FILES IS ORDER DEPENDENT
+
     @weight(1) # this is how many points the test is worth
     @number("2") # this is how gradescope orders the tests
     @visibility("visible") # this changes how students are shown the tests. here is the full list of options
@@ -61,12 +64,12 @@ class TestCaseName(unittest.TestCase):
     @timeout_decorator.timeout(5) # this times out test after the given number of seconds and raises an exception
                                   #     when it does time out
     def test_Query1(self): # ALL TESTS MUST START WITH test_
-        # This where you call next_query() on each file get the rows from the queries and test them
+        # This where you call next_query() on each file get the rows from the Read and test them
         # AGAIN, CALL GOLD BEFORE STUDENT TO AVOID DESYNC
         true = self.gold.next_query()
         out = self.query.next_query()
         self.assertDictEqual(out, true)
         """
         There are actually a lot of different assert functions available in unittest. 
-        I will not list them all, but I think the most useful is assertDictEqual for testing queries.
+        I will not list them all, but I think the most useful is assertDictEqual for testing Read.
         """

@@ -1,5 +1,5 @@
 """
-This is the example file for HW using only queries in a .sql file
+This is the example file for HW using only Read in a .sql file
 This is what the testing file(s) will look like
 """
 

@@ -1,9 +1,11 @@
+-- this is an example student .sql file for creating a database
+
 CREATE DATABASE vehicle;
 
 \c vehicle
 
 CREATE TABLE car(
-    num int,
+    num int
     make varchar
 );
 
