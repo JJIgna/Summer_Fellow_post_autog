@@ -35,20 +35,22 @@ COPY --chmod=0600 .pgpass /root/
 # These varibles are call in places where they are needed
 # This means they only need to be set here
 
-ENV HW_NAME="manage.sql"
-ENV GOLD_FILE="goldUD.sql"
+ENV HW_NAME="AttTabLim.py"
+ENV GOLD_FILE="goldPy_var.sql"
 
 # number of HW solutions or number of problems
 ENV SOL_NUM="3"
 
-# URL to the database that will be access for the HW
-ENV DB_URL="postgresql://testee@localhost/testee"
+# These variables work in tandum to allow you select which database and under
+#   which user you would like to connect to
+ENV DB_USER="testee"
+ENV DB_NAME="testee"
 
 # .sql file that sets up a defualt user
 ENV DB_USER_SET="dbUserSet.sql"
 
 # .sql file that contains statements for setting up user privileges
-ENV PRIV_SET="priv.sql"
+ENV PRIV_SET=""
 
 # this is the name of the file that is given to pg_restore
 # set to "" to disable automatic DB building
@@ -66,7 +68,7 @@ COPY source /autograder/source
 #                           dbUserSet.sql
 #                           run_test.py
 #                           build
-#                           set_privileges.sql
+#                           set_privileges.sql (for privilege testing)
 
 COPY tests /autograder/source/tests
 #   contains the files needed for testings. changes depending on the test

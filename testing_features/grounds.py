@@ -1,3 +1,3 @@
-from region import region
+from AttTabLim import query
 
-print(region())
+print(query("name", "student", 1))

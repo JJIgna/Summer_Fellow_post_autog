@@ -68,7 +68,7 @@ class TestCaseName(unittest.TestCase):
         # AGAIN, CALL GOLD BEFORE STUDENT TO AVOID DESYNC
         true = self.gold.next_query()
         out = self.query.next_query()
-        self.assertDictEqual(out, true)
+        self.assertListEqual(out, true)
         """
         There are actually a lot of different assert functions available in unittest. 
         I will not list them all, but I think the most useful is assertDictEqual for testing Read.

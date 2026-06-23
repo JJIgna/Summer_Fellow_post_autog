@@ -13,7 +13,7 @@ if [ "$DB_BUILD" != "" ]; then
 fi
 
 if [ "$PRIV_SET" != "" ]; then
-    pg_restore -U testee -h localhost -d testee -O /autograder/source/"$PRIV_SET"
+    psql -U testee -h localhost -d testee -f /autograder/source/"$PRIV_SET"
 fi
 
 # move assignment file into source so it is accessible by run_test

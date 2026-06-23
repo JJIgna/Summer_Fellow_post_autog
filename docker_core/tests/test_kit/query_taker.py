@@ -25,11 +25,11 @@ class QueryTaker:
             while c := q.read(1):
 
                 # look for start sm
-                if c == "-":
+                if c == "@":
                     # take in next two characters
                     c = c + q.read(2)
                     # check for sm
-                    if c == "--@":
+                    if c == "@_@":
                         # if so, are we collecting?
                         if collecting:
                             # if found sm and collecting, we have encountered sm before
@@ -56,30 +56,26 @@ class QueryTaker:
         self.num += 1
         yield ''.join(buff)
 
-    def execute_query(self):
-        url = os.getenv('DB_URL')
-
+    def execute_next(self, manage=False, user="", db=""):
+        if user != "":
+            os.environ["DB_USER"] = user
+        if db != "":
+            os.environ["DB_NAME"] = db
         # establish connection
-        with psycopg.connect(url) as conn:
+        with psycopg.connect("postgresql://"+os.getenv("DB_USER")+"@localhost/"+os.getenv("DB_NAME")) as conn:
             with conn.cursor(row_factory=dict_row) as cur:
                 # run query
-                    cur.execute(self.run.__next__())
+                cur.execute(self.run.__next__())
+                if not manage:
                     return cur.fetchall()
+                else:
+                    return True
 
-    def execute_manage(self):
-        url = os.getenv('DB_URL')
-
-        # establish connection
-        with psycopg.connect(url) as conn:
-            with conn.cursor(row_factory=dict_row) as cur:
-                # run query
-                    cur.execute(self.run.__next__())
-
-    def next_query(self, manage=False):
+    def next_query(self, manage=False, user="", db=""):
         if self.done:
             raise IncorrectQueryAmountError(os.getenv('SOL_NUM'),str(self.num))
-        if not manage:
-            return self.execute_query()
-        else:
-            self.execute_manage()
-        return True
+        try :
+           return self.execute_next(manage=manage, user=user, db=db)
+        except Exception as e:
+            print(f"error: {e}")
+            return False
