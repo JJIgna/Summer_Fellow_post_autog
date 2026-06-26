@@ -1,0 +1,33 @@
+{
+    "tests": [
+        {
+            "name": "test_1_ClassroomCapacity (test_where.TestCaseName)",
+            "score": 0.0,
+            "max_score": 1,
+            "status": "failed",
+            "output": "Test Failed: Lists differ: [{'room_number': '134'}, {'room_number': '375'}, {'room_num[390 chars]04'}] != [{'room_number': '45'}, {'room_number': '134'}, {'room_numb[198 chars]48'}]\n\nFirst differing element 0:\n{'room_number': '134'}\n{'room_number': '45'}\n\nFirst list contains 8 additional elements.\nFirst extra element 11:\n{'room_number': '700'}\n\nDiff is 1207 characters long. Set self.maxDiff to None to see it.\n",
+            "visibility": "visible",
+            "number": "1"
+        },
+        {
+            "name": "test_2_StudentDept (test_where.TestCaseName)",
+            "score": 0.0,
+            "max_score": 1,
+            "status": "failed",
+            "output": "error: type \"dept_name\" does not exist\nLINE 4: WHERE dept_name  'History';\n              ^\n\nTest Failed: First sequence is not a list: False\n",
+            "visibility": "visible",
+            "number": "2"
+        },
+        {
+            "name": "test_3_Advisor (test_where.TestCaseName)",
+            "score": 1,
+            "max_score": 1,
+            "status": "passed",
+            "visibility": "visible",
+            "number": "3"
+        }
+    ],
+    "leaderboard": [],
+    "execution_time": "0.04",
+    "score": 1.0
+}

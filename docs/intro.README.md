@@ -23,10 +23,6 @@ This directory contains three subdirectories:
 
 Each subdirectory will contain its own README.md explaining it contents.
 
-### How To Use
-
-
-
 Have fun. Happy Testing.
 
 ## _Jai-Jai Ignac_

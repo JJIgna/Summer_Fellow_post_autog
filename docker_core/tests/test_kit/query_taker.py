@@ -3,6 +3,7 @@ from psycopg.rows import dict_row
 import os
 from test_kit.wrong_number import IncorrectQueryAmountError
 
+
 # Query Taker class
 #   used when testing .sql files or when using .sql files
 
@@ -58,11 +59,15 @@ class QueryTaker:
 
     def execute_next(self, manage=False, user="", db=""):
         if user != "":
-            os.environ["DB_USER"] = user
+            username = user
+        else:
+            username = os.getenv("DB_USER")
         if db != "":
-            os.environ["DB_NAME"] = db
+            dbname =  db
+        else:
+            dbname = os.getenv("DB_NAME")
         # establish connection
-        with psycopg.connect("postgresql://"+os.getenv("DB_USER")+"@localhost/"+os.getenv("DB_NAME")) as conn:
+        with psycopg.connect("postgresql://" + username + "@localhost/" + dbname) as conn:
             with conn.cursor(row_factory=dict_row) as cur:
                 # run query
                 cur.execute(self.run.__next__())
@@ -73,9 +78,9 @@ class QueryTaker:
 
     def next_query(self, manage=False, user="", db=""):
         if self.done:
-            raise IncorrectQueryAmountError(os.getenv('SOL_NUM'),str(self.num))
-        try :
-           return self.execute_next(manage=manage, user=user, db=db)
+            raise IncorrectQueryAmountError(os.getenv('SOL_NUM'), str(self.num))
+        try:
+            return self.execute_next(manage=manage, user=user, db=db)
         except Exception as e:
             print(f"error: {e}")
             return False

@@ -1,10 +1,3 @@
-"""
-This is the template file for query HW using .sql files.
-All the parts of the testing file will be here with places holders and explanations.
-
-MAKE THE NAME OF THIS FILE HAS "test_" AT THE BEGINNING. THIS IS HOW unittest FINDS THE FILE.
-"""
-
 # imports
 import unittest
 from gradescope_utils.autograder_utils.decorators import weight, number, visibility
@@ -24,7 +17,25 @@ class TestCaseName(unittest.TestCase):
     @number("1")
     @visibility("visible")
     @timeout(5)
-    def test_Query1(self): # ALL TESTS MUST START WITH test_
+    def test_1_ClassroomCapacity(self):
+        true = self.gold.next_query()
+        out = self.query.next_query()
+        self.assertListEqual(out, true)
+
+    @weight(1)
+    @number("2")
+    @visibility("visible")
+    @timeout(5)
+    def test_2_StudentDept(self):
+        true = self.gold.next_query()
+        out = self.query.next_query()
+        self.assertListEqual(out, true)
+
+    @weight(1)
+    @number("3")
+    @visibility("visible")
+    @timeout(5)
+    def test_3_Advisor(self):
         true = self.gold.next_query()
         out = self.query.next_query()
         self.assertListEqual(out, true)

@@ -24,4 +24,4 @@ class Manage(unittest.TestCase):
     @weight(1)
     def test_4values_insert(self):
         true = self.gold.next_query()
-        self.assertEqual(str(true), "[{'dept_name': 'Cybernetics'}]")
+        self.assertEqual(str(true), "newly added or deleted row")

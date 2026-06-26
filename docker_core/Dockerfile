@@ -35,8 +35,8 @@ COPY --chmod=0600 .pgpass /root/
 # These varibles are call in places where they are needed
 # This means they only need to be set here
 
-ENV HW_NAME="AttTabLim.py"
-ENV GOLD_FILE="goldPy_var.sql"
+ENV HW_NAME="where.sql"
+ENV GOLD_FILE="goldWhere.sql"
 
 # number of HW solutions or number of problems
 ENV SOL_NUM="3"

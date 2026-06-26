@@ -2,25 +2,24 @@
 
 ---
 
-## Introduction
-
 Welcome to `docker_core`.  
 This directory is the build context for the PTE docker image. It serves as storage for all the files that inhabit every image, 
 and it is where the necessary files for a given testing instance are collected to produce its image. This README will go over the files
 that permanently reside in this directory and exist in every PTE image. In short, they are: 
 
-| File/Directory                      | usage                                    |
-|-------------------------------------|------------------------------------------|
-| [`Dockerfile`](#Dockerfile)         | builds image                             |
-| [`compose`](#compose)               | assits in local testing                  |
-| [`run_autograder`](#run_autograder) | start of autograder                      |
-| [source](#source)                   | working directory inside container       |
-| [tests](#tests)                     | contains all tests and helper class      |
-| [misc](#misc)                       | not a specific file, they assist the PTE |
+| File/Directory                      | usage                                       |
+|-------------------------------------|---------------------------------------------|
+| [`Dockerfile`](#Dockerfile)         | builds image                                |
+| [`compose`](#compose)               | assits in local testing                     |
+| [`run_autograder`](#run_autograder) | start of autograder                         |
+| [`source`](#source)                 | working directory inside container          |
+| [`tests`](#tests)                   | contains all tests and helper class         |
+| [`local_testing`](#local_testing)   | mounted to local run contianers for testing |
+| [misc](#misc)                       | not a specific file, they assist the PTE    |
 
 ---
 
-## `Dockerfile`
+### `Dockerfile`
 
 The base image is `gradescope/autograder-base:ubuntu-22.04`. `autograder-base` is used to allow easy integration with gradescope.
 `ubuntu-22.04` is the lastest version that supports Postgres 18. This is important as it is the version used in class. 
@@ -57,15 +56,28 @@ set in a different file. This can be left as the empty string to forgo any privi
 
 ---
 
-## `compose`
+### `compose`
+
+`Compose` files are another way of running a docker container. This `compose` file gives quick way to build your current docker 
+image and run it local while mounted to your system. The allows to run the container with a dummy submission to test the PTE.
+The mounted directories are under `local_testing`. `submission` mounts to `/autograder/submission` and `results` mounts 
+to `/autograder/results/`
+
+`docker compose build native`
+: build the current image
+
+`docker compose run --rm -it native bash`
+: run a local container mount to your system.
 
 ---
 
-## `run_autograder`
+### `run_autograder`
+
+This is file required by Gradescope. It is how the PTE starts the autograder.
 
 ---
 
-## source
+### `source`
 
 The source directory mimics the source directory found in the PTE container. It is the working directory and contains all 
 the necessary files for the PTE to run. The files in source change depending on the suite, but these files always fall into 
@@ -80,12 +92,22 @@ source.
 
 ---
 
-## tests
+### `tests`
 
 Though outside in the project, tests does end in source inside the PTE. Here is where the testing is suite placed.
 
 ---
 
-## misc
+### `local_testing`
+
+This directory contains subdirectories that are mounted to local ran containers when testings images. They map to their like
+counterparts in `/autograder` in the PTE.
+
+---
+
+### misc
+
+There are other files inside `Docker_core`. They are `.pg_pass` and `pgdg.sources`. `pgdg.sources` is used in the manual 
+`apt` update that is required to install PostgreSQL. `.pg_pass` is a Postgres password file.
 
 ---

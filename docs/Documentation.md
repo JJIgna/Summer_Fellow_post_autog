@@ -60,34 +60,3 @@ contents using your gold file.
 Add decorators to your tests to give them added information in Gradescope. These decorators include number, weight, and visibility. 
 A timeout decorator can also be added to give a time limit to the queries. 
 
-
-## Tutorial For Testing Queries 
-
-#### The assignment
-Let's say we have an assignment about the `where` conditional, and we are using the University database. Let's start by 
-defining our questions:
-* Find the room number of all classrooms with capacity of greater than 50.
-* Find the name of all students in the History department.
-* Find id of all students advised by 59795.
-
-#### Gold File
-Next lets make our gold file. First we need to make our queries:
-    
-    --@_@--
-    SELECT room_number
-    FROM classroom
-    WHERE capacity > 50;
-    --@_@--
-    SELECT name 
-    FROM student 
-    WHERE dept_name = 'History';
-    --@_@--
-    SELECT s_id 
-    FROM advisor
-    WHERE i_id = '59795';
-
-Notice the `--@_@--` before the queries. These are needed always needed in any gold file that is a `.sql`. 
-
-#### 'test_*.py'
-Now let's move to the `test_*.py`. We will call ours `test_where.py`. We will use the `query_HW_template.py` from `Read`.
-We don't need to a

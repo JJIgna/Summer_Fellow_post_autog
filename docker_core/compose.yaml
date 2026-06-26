@@ -4,5 +4,5 @@ services:
       context: .
       dockerfile: Dockerfile
     volumes:
-      - C:\Users\jjign\summerfellow_26\sub:/autograder/submission
-      - C:\Users\jjign\summerfellow_26\res:/autograder/results
+      - .\local_testing\submission:/autograder/submission
+      - .\local_testing\results:/autograder/results
