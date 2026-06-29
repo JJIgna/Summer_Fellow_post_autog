@@ -15,7 +15,7 @@ This document breaks down every part of a `test_*.py` file. It will give explana
 
 ## Anatomy
 
-There are three main parts to a `test_*.py` file: the class definition, the setup, and the tests themselves. The tests 
+There are three main parts to a `test_*.py` file: the class definition, the setup, and the test cases . The test cases 
 also have three parts: the decorators, value collection, and `assert` statements. There are also imports, but these stay
 the same in every file, so they will not be covered here.
 
@@ -23,8 +23,8 @@ the same in every file, so they will not be covered here.
     class TestCaseName(unittest.TestCase):
     
         # setup
-        query = QueryTaker(os.getenv('HW_NAME'))
-        gold = QueryTaker(os.getenv('GOLD_FILE'))
+        query = SQLTaker(os.getenv('HW_NAME'))
+        gold = SQLTaker(os.getenv('GOLD_FILE'))
         
         # tests themselves
         # decorators 
@@ -34,12 +34,12 @@ the same in every file, so they will not be covered here.
         @timeout(5)
         def test_Query1(self):
             # collection of values
-            true = self.gold.next_query()
-            out = self.query.next_query()
+            true = self.gold.next_sql()
+            out = self.query.next_sql()
             # assert
             self.assertListEqual(out, true)
 
-This example is for READ statements
+This example is for READ tests.
 
 ---
 
@@ -48,11 +48,11 @@ This example is for READ statements
 Before we move on to each selection, I want to quickly note why these files have this structure and how to name them, as 
 they are related. 
 
-These files are built using `unittest`, an object-oriented Python testing package. It defines a class `TestCase` makes a set
-of similar tests. The individual tests are functions of that `TestCase`. This comes with some important conventions.
-1. The files must have `test_` in the beginning. This is how `unittest` knows the file has a `TestCase`
+These files are built using `unittest`, an object-oriented Python testing package. It defines a class `TestCase` makes a set 
+of test cases. The individual tests are defined as functions. This comes with some important conventions.
+1. The files must have `test_` in the beginning. This is how `unittest` knows the file has a `TestCase`.
 2. Though the class doesn't have any naming conventions, it must inherit the `TestCase` class.
-3. Each test in the class must have `test_` in the beginning of its name, much like the file.
+3. Each test case in the class must have `test_` in the beginning of its name, much like the file.
 4. Tests run in alphabetical order using their names. This is very important as the nature of the PTE makes the tests order
 sensitive. So, __make sure the name of the tests reflect their order so they run correctly.__ This is not as important for READ tests
 because as long as the student file and gold file are always executed at the same time, it will check correctly just under the wrong test name.
@@ -62,9 +62,9 @@ _However_, this is major concern for management test that have hardcode keys. So
 
 ## setup
 
-The main thing that will be setup are `QueryTaker` instances for the gold and or student files. We want these as class varibles 
+The main things that will be setup are `SQLTaker` instances for the gold and or student files. We want these as class varibles 
 so they can be accessed bt each test. `unittest` does have `setUp` and `tearDown` as builtins, but they run for every test
-are therefore not useful for testing up our `QueryTaker` instances.
+are therefore not useful for testing up our `SQLTaker` instances.
 
 This is also where an instance variable for a Psycopg function will be defined.
 
@@ -82,7 +82,7 @@ The PTE makes use of four decorators. Three are from Gradescope's `autograder_ut
 : This gives each test a number or value associated with it. This value is what Gradescope uses to order the tests.
 
 `@visibility`
-: This determines how and when the student sees the test. Here all the values `@visibility` can be set to:
+: This determines how and when the student sees the test case. Here all the values `@visibility` can be set to:
 
 * `hidden`: test case will never be shown to students
 * `after_due_date`: test case will be shown after the assignment's due date has passed.
@@ -94,13 +94,13 @@ The PTE makes use of four decorators. Three are from Gradescope's `autograder_ut
 These all come form the official Gradescope documentation.
 
 `@timeout`
-: Sets a timeout timer for the given number of seconds. If runs longer than the timer, the test is failed.
+: Sets a timeout timer for the given number of seconds. If runs longer than the timer, the test case is failed.
 
 ---
 
 ## Value Collection
 
-This is where the output from a `QueryTaker` or Psycopg function is collected. When collected from both a student and a gold 
+This is where the output from a `SQLTaker` or Psycopg function is collected. When collected from both a student and a gold 
 file, call the gold file frist. This way if any error occurs when calling the student file and the whole test raises, the gold file 
 will still iterate and the following tests will proceed normally.
 
@@ -112,14 +112,14 @@ Here is where the answer check is made using the `unittest` `self.assert`. There
 used for the PTE:
 
 `assertEqual`
-: This checks using ==. This used when checking against a hardcode key. The output from `QueryTaker` will need to be converted
+: This checks using ==. This used when checking against a hardcode key. The output from `SQLTaker` will need to be converted
 to a string.
 
 `assertListEqual`
 : This is used when checking two lists when you have a gold and student `.sql`.
 
 `assertTrue` and `assertFale`
-: These check if a value is true or false, respectively. These are used when checking management states. `assertTrue` is used
+: These check if a value is true or false, respectively. These are used when checking CREATE, UPDATE, and DELETE statements. `assertTrue` is used
 when checking syntax. `assertFalse` is used when checking a removed or absent privilege. 
 
 

@@ -1,13 +1,13 @@
 import psycopg
 from psycopg.rows import dict_row
 import os
-from test_kit.wrong_number import IncorrectQueryAmountError
+from test_kit.wrong_number import IncorrectStatementAmountError
 
 
 # Query Taker class
 #   used when testing .sql files or when using .sql files
 
-class QueryTaker:
+class SQLTaker:
     def __init__(self, path):
         self.path = path
         self.done = False
@@ -76,9 +76,9 @@ class QueryTaker:
                 else:
                     return True
 
-    def next_query(self, manage=False, user="", db=""):
+    def next_sql(self, manage=False, user="", db=""):
         if self.done:
-            raise IncorrectQueryAmountError(os.getenv('SOL_NUM'), str(self.num))
+            raise IncorrectStatementAmountError(os.getenv('SOL_NUM'), str(self.num))
         try:
             return self.execute_next(manage=manage, user=user, db=db)
         except Exception as e:

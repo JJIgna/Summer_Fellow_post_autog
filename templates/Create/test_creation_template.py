@@ -8,7 +8,7 @@ The main differences are running the creation file and checking the crated db.
 import unittest
 from gradescope_utils.autograder_utils.decorators import weight, number, visibility
 from subprocess import run
-from test_kit.query_taker import QueryTaker
+from test_kit.SQL_taker import SQLTaker
 import os
 import psycopg
 
@@ -17,7 +17,7 @@ import psycopg
 class PsqlF(unittest.TestCase):
 
     # you still need to make a QueryTaker instance for the gold file
-    gold = QueryTaker(os.getenv('GOLD_FILE'))
+    gold = SQLTaker(os.getenv('GOLD_FILE'))
 
     # here is where the differences begin
 
@@ -45,5 +45,5 @@ class PsqlF(unittest.TestCase):
     @number(3)
     @weight(1)
     def test_values(self):
-        true = self.gold.next_query()
+        true = self.gold.next_sql()
         self.assertEqual(str(true), "these checks will have to be hardcoded unfortunately")

@@ -21,8 +21,6 @@ This directory contains three subdirectories:
 3. `testind_features`
    * this will most likely get removed at some point
 
-Each subdirectory will contain its own README.md explaining it contents.
-
 Have fun. Happy Testing.
 
 ## _Jai-Jai Ignac_

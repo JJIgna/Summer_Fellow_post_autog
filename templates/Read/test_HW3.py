@@ -24,8 +24,8 @@ class UniDBQueries(unittest.TestCase):
     @visibility("visible")
     @timeout_decorator.timeout(5)
     def test_Query1(self):
-        true = self.gold.next_query()
-        out = self.query.next_query()
+        true = self.gold.next_sql()
+        out = self.query.next_sql()
         self.assertListEqual(out, true)
 
     @weight(1)
@@ -33,8 +33,8 @@ class UniDBQueries(unittest.TestCase):
     @visibility("visible")
     @timeout_decorator.timeout(5)
     def test_Query2(self):
-        true = self.gold.next_query()
-        out =  self.query.next_query()
+        true = self.gold.next_sql()
+        out =  self.query.next_sql()
         self.assertListEqual(out, true)
 
     @weight(1)
@@ -42,8 +42,8 @@ class UniDBQueries(unittest.TestCase):
     @visibility("visible")
     @timeout_decorator.timeout(5)
     def test_Query3(self):
-        true = self.gold.next_query()
-        out =  self.query.next_query()
+        true = self.gold.next_sql()
+        out =  self.query.next_sql()
         self.assertListEqual(out, true)
 
     @weight(1)
@@ -51,8 +51,8 @@ class UniDBQueries(unittest.TestCase):
     @visibility("visible")
     @timeout_decorator.timeout(5)
     def test_Query4(self):
-        true = self.gold.next_query()
-        out =  self.query.next_query()
+        true = self.gold.next_sql()
+        out =  self.query.next_sql()
         self.assertListEqual(out, true)
 
     @weight(1)
@@ -60,8 +60,8 @@ class UniDBQueries(unittest.TestCase):
     @visibility("visible")
     @timeout_decorator.timeout(5)
     def test_Query5(self):
-        true = self.gold.next_query()
-        out =  self.query.next_query()
+        true = self.gold.next_sql()
+        out =  self.query.next_sql()
         self.assertListEqual(out, true)
 
     @weight(1)
@@ -69,8 +69,8 @@ class UniDBQueries(unittest.TestCase):
     @visibility("visible")
     @timeout_decorator.timeout(5)
     def test_Query6(self):
-        true = self.gold.next_query()
-        out =  self.query.next_query()
+        true = self.gold.next_sql()
+        out =  self.query.next_sql()
         self.assertListEqual(out, true)
 
     @weight(1)
@@ -78,8 +78,8 @@ class UniDBQueries(unittest.TestCase):
     @visibility("visible")
     @timeout_decorator.timeout(5)
     def test_Query7(self):
-        true = self.gold.next_query()
-        out =  self.query.next_query()
+        true = self.gold.next_sql()
+        out =  self.query.next_sql()
         self.assertListEqual(out, true)
 
     @weight(1)
@@ -87,6 +87,6 @@ class UniDBQueries(unittest.TestCase):
     @visibility("visible")
     @timeout_decorator.timeout(5)
     def test_Query8(self):
-        true = self.gold.next_query()
-        out =  self.query.next_query()
+        true = self.gold.next_sql()
+        out =  self.query.next_sql()
         self.assertListEqual(out, true)

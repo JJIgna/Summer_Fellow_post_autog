@@ -66,8 +66,8 @@ class TestCaseName(unittest.TestCase):
     def test_Query1(self): # ALL TESTS MUST START WITH test_
         # This where you call next_query() on each file get the rows from the Read and test them
         # AGAIN, CALL GOLD BEFORE STUDENT TO AVOID DESYNC
-        true = self.gold.next_query()
-        out = self.query.next_query()
+        true = self.gold.next_sql()
+        out = self.query.next_sql()
         self.assertListEqual(out, true)
         """
         There are actually a lot of different assert functions available in unittest. 

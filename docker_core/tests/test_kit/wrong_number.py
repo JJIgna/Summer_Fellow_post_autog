@@ -1,4 +1,4 @@
-class IncorrectQueryAmountError(Exception):
+class IncorrectStatementAmountError(Exception):
     def __init__(self, expected, found):
         self.expected = expected
         self.found = found

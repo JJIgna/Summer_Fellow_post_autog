@@ -5,14 +5,14 @@ This is the example file for testing db creation
 import unittest
 from gradescope_utils.autograder_utils.decorators import weight, number, visibility
 from subprocess import run
-from test_kit.query_taker import QueryTaker
+from test_kit.SQL_taker import SQLTaker
 import os
 import psycopg
 
 
 class PsqlF(unittest.TestCase):
 
-    gold = QueryTaker(os.getenv('GOLD_FILE'))
+    gold = SQLTaker(os.getenv('GOLD_FILE'))
 
     @number(1)
     @weight(1)
@@ -32,5 +32,5 @@ class PsqlF(unittest.TestCase):
     @number(3)
     @weight(1)
     def test_values(self):
-        true = self.gold.next_query()
+        true = self.gold.next_sql()
         self.assertEqual(str(true), "[{'make': 'honda'}]")

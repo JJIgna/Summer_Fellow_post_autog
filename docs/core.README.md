@@ -4,8 +4,8 @@
 
 Welcome to `docker_core`.  
 This directory is the build context for the PTE docker image. It serves as storage for all the files that inhabit every image, 
-and it is where the necessary files for a given testing instance are collected to produce its image. This README will go over the files
-that permanently reside in this directory and exist in every PTE image. In short, they are: 
+and it is where the necessary files for a given environment instance are collected to produce its image. This README will go over 
+the files that permanently reside in this directory and exist in every PTE image. In short, they are: 
 
 | File/Directory                      | usage                                       |
 |-------------------------------------|---------------------------------------------|
@@ -23,7 +23,6 @@ that permanently reside in this directory and exist in every PTE image. In short
 
 The base image is `gradescope/autograder-base:ubuntu-22.04`. `autograder-base` is used to allow easy integration with gradescope.
 `ubuntu-22.04` is the lastest version that supports Postgres 18. This is important as it is the version used in class. 
-
 
 The `Dockerfile` also contains a number of `ENV` commands. These are defined in the `Dockerfile` to for easy configuration.
 
@@ -94,7 +93,7 @@ source.
 
 ### `tests`
 
-Though outside in the project, tests does end in source inside the PTE. Here is where the testing is suite placed.
+Here is where the testing suite is placed.
 
 ---
 
