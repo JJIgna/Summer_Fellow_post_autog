@@ -1,7 +1,7 @@
 """
 This is an example and temple
 """
-# same imports as before
+
 import unittest
 from gradescope_utils.autograder_utils.decorators import weight, number
 from test_kit.SQL_taker import SQLTaker
@@ -10,7 +10,6 @@ import os
 import AttTabLim
 
 class TestRegion(unittest.TestCase):
-    # still need a QueryTaker instance for the gold file
     gold = SQLTaker(os.getenv("GOLD_FILE"))
 
     @weight(1)

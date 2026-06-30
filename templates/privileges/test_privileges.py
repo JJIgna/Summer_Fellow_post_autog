@@ -1,5 +1,5 @@
 """
-Thi is am example test file for testing privileges.
+This is am example test file for testing privileges.
 """
 
 import unittest
@@ -10,6 +10,10 @@ import os
 class Priv(unittest.TestCase):
     gold = SQLTaker(os.getenv('GOLD_FILE'))
     stu = SQLTaker(os.getenv('HW_NAME'))
+
+# -------------------------------------------------------------------------------
+# Syntax check, only the student file is executed
+# This is where the privileges changes are made by the student's code
 
     @number(1)
     @weight(1)
@@ -35,12 +39,14 @@ class Priv(unittest.TestCase):
         val = self.stu.next_sql(manage=True)
         self.assertTrue(val, msg="error in create revoke statement")
 
+# -------------------------------------------------------------------------------
+
+# -------------------------------------------------------------------------------
+# Content check, only gold file is run
+
     @number(5)
     @weight(1)
     def test_5_role(self):
-        """
-
-        """
         true = self.gold.next_sql()
         self.assertEqual(str(true), "[{'rolname': 'alice'}]", msg="user 'alice' not found")
 
@@ -55,3 +61,5 @@ class Priv(unittest.TestCase):
     def test_7values_delete(self):
         true = self.gold.next_sql(user="bob")
         self.assertFalse(true, msg="user 'bob' can still access students")
+
+# -------------------------------------------------------------------------------

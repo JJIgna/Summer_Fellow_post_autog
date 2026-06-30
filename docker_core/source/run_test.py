@@ -13,4 +13,4 @@ if __name__ == '__main__':
     with open('/autograder/results/results.json', 'w') as f:
         # JSONTestRunner comes from gradescope-utils and automatically creates the json file
         # with the formating gradescope is expecting
-        JSONTestRunner(stream=f).run(suite)
+        JSONTestRunner(visibility= "visible", stream=f).run(suite)

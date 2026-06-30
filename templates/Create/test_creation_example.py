@@ -11,12 +11,15 @@ import psycopg
 
 
 class PsqlF(unittest.TestCase):
-
     gold = SQLTaker(os.getenv('GOLD_FILE'))
+    # only setup gold, student is run through -f
 
     @number(1)
     @weight(1)
     def test_bad(self):
+        """
+        syntax check
+        """
         hw = os.getenv("HW_NAME")
         result = run("psql -U testee -h localhost -f" + hw, capture_output=True, shell=True)
         self.assertNotRegex(str(result.stderr), "ERROR", msg=f"syntax error in: {hw}")
@@ -24,6 +27,9 @@ class PsqlF(unittest.TestCase):
     @number(2)
     @weight(1)
     def test_connection(self):
+        """
+        connection check
+        """
         connect = False
         with psycopg.connect(os.getenv('DB_URL')):
             connect = True
@@ -32,5 +38,8 @@ class PsqlF(unittest.TestCase):
     @number(3)
     @weight(1)
     def test_values(self):
+        """
+        content check
+        """
         true = self.gold.next_sql()
         self.assertEqual(str(true), "[{'make': 'honda'}]")

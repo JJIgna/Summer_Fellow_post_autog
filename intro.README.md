@@ -1,4 +1,5 @@
 # Letter to User
+# PTE Version 1.0
 
 ---
 
@@ -18,8 +19,14 @@ This directory contains three subdirectories:
    * This is the build context for the PTE image. 
 2. `templates`
    * This contains all the example abd template files for the different kinds of tests that can be conducted.
-3. `testind_features`
-   * this will most likely get removed at some point
+3. `Tutorial`
+   * This is a basic tutorial walking through how to make a PTE for testing READ statements
+
+There are also two other `Markdown` files : 
+1. `HowTos`
+   * A few basic How-Tos for setting up the PTE
+2. `troubleshooting` 
+   * a few troubleshooting notes
 
 Have fun. Happy Testing.
 

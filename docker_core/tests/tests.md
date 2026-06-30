@@ -2,14 +2,14 @@
 
 This document breaks down every part of a `test_*.py` file. It will give explanations and describe how to use each part.
 
-| Table of Contents    |
-|----------------------|
-| anatomy              |
-| `unittest` and names |
-| setup                |
-| decorators           |
-| value collection     |
-| `assert`             |
+| Table of Contents                         |
+|-------------------------------------------|
+| [Anatomy](#Anatomy)                       |
+| [Unittest and Names](#Unittest_and_Names) |
+| [Setup](#Setup)                           |
+| [Decorators](#Decorators)                 |
+| [Value Collection](#Value_Collection)     |
+| [Assert](#Assert)                         |
 
 ---
 
@@ -43,7 +43,7 @@ This example is for READ tests.
 
 ---
 
-## `unittest` and names
+## Unittest_and_Names
 
 Before we move on to each selection, I want to quickly note why these files have this structure and how to name them, as 
 they are related. 
@@ -60,7 +60,7 @@ _However_, this is major concern for management test that have hardcode keys. So
 
 ---
 
-## setup
+## Setup
 
 The main things that will be setup are `SQLTaker` instances for the gold and or student files. We want these as class varibles 
 so they can be accessed bt each test. `unittest` does have `setUp` and `tearDown` as builtins, but they run for every test
@@ -98,7 +98,7 @@ These all come form the official Gradescope documentation.
 
 ---
 
-## Value Collection
+## Value_Collection
 
 This is where the output from a `SQLTaker` or Psycopg function is collected. When collected from both a student and a gold 
 file, call the gold file frist. This way if any error occurs when calling the student file and the whole test raises, the gold file 
