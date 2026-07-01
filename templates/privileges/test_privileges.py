@@ -3,8 +3,8 @@ This is am example test file for testing privileges.
 """
 
 import unittest
-from gradescope_utils.autograder_utils.decorators import weight, number, visibility
-from test_kit.SQL_taker import SQLTaker
+from gradescope_utils.autograder_utils.decorators import weight, number
+from test_kit import SQLTaker
 import os
 
 class Priv(unittest.TestCase):

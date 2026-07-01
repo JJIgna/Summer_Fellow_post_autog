@@ -1,4 +1,4 @@
-## Demo Assignment
+## Assignment #1
 
 ### 1. Department Census
 Find the name of the Department with the most Instructors.

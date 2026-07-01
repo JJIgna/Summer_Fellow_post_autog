@@ -3,8 +3,8 @@ This is the template file for testing database management or update and delete s
 """
 
 import unittest
-from gradescope_utils.autograder_utils.decorators import weight, number, visibility
-from test_kit.SQL_taker import SQLTaker
+from gradescope_utils.autograder_utils.decorators import weight, number
+from test_kit import SQLTaker
 import os
 
 

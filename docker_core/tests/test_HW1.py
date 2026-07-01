@@ -5,7 +5,7 @@ from test_kit.SQL_taker import SQLTaker
 import os
 from timeout_decorator import timeout
 
-class TestCaseName(unittest.TestCase):
+class Assigment1(unittest.TestCase):
     # set up QueryTaker instances for both the HW and gold files
     query = SQLTaker(os.getenv('HW_NAME'))
     gold = SQLTaker(os.getenv('GOLD_FILE'))
@@ -14,28 +14,28 @@ class TestCaseName(unittest.TestCase):
 # THIS WILL AFFECT GRADING AS QUERIES FROM .sql FILES IS ORDER DEPENDENT
 
     @weight(1)
-    @number("1. Department Instructors")
+    @number("1. Department Census")
     @visibility("visible")
     @timeout(5)
-    def test_1(self):
+    def test_Query1(self):
         true = self.gold.next_sql()
         out = self.query.next_sql()
         self.assertListEqual(true, out)
 
     @weight(1)
-    @number("2. Course Popularity")
+    @number("2. Popularity Contest")
     @visibility("hidden")
     @timeout(5)
-    def test_2(self):
+    def test_Query2(self):
         true = self.gold.next_sql()
         out = self.query.next_sql()
         self.assertListEqual(true, out)
 
     @weight(1)
-    @number("3. Instructing Time")
+    @number("3. Hardworking")
     @visibility("visible")
     @timeout(5)
-    def test_3(self):
+    def test_Query3(self):
         true = self.gold.next_sql()
         out = self.query.next_sql()
         self.assertListEqual(true, out)

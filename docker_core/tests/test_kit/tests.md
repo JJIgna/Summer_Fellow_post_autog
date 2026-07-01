@@ -50,7 +50,8 @@ they are related.
 
 These files are built using `unittest`, an object-oriented Python testing package. It defines a class `TestCase` makes a set 
 of test cases. The individual tests are defined as functions. This comes with some important conventions.
-1. The files must have `test_` in the beginning. This is how `unittest` knows the file has a `TestCase`.
+1. The files must have `test_` in the beginning. This is how `unittest` knows the file has a `TestCase`. __Files names can not__
+__contain special characters__.
 2. Though the class doesn't have any naming conventions, it must inherit the `TestCase` class.
 3. Each test case in the class must have `test_` in the beginning of its name, much like the file.
 4. Tests run in alphabetical order using their names. This is very important as the nature of the PTE makes the tests order

@@ -8,7 +8,7 @@ MAKE THE NAME OF THIS FILE HAS "test_" AT THE BEGINNING. THIS IS HOW unittest FI
 # imports
 import unittest
 from gradescope_utils.autograder_utils.decorators import weight, number, visibility
-from test_kit.SQL_taker import SQLTaker
+from test_kit import SQLTaker
 import os
 from timeout_decorator import timeout
 

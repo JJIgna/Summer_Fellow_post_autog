@@ -4,7 +4,7 @@ This is an example and temple
 # same imports as before
 import unittest
 from gradescope_utils.autograder_utils.decorators import weight, number
-from test_kit.SQL_taker import SQLTaker
+from test_kit import SQLTaker
 import os
 # we are testing a Python file, so we need to import the file to get the function
 import Region

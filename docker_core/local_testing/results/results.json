@@ -1,34 +1,32 @@
 {
     "tests": [
         {
-            "name": "test_1 (test_demo.TestCaseName)",
-            "score": 0.0,
+            "name": "test_Query1 (test_HW1.Assigment1)",
+            "score": 1,
             "max_score": 1,
-            "status": "failed",
-            "output": "error: syntax error at or near \"select\"\nLINE 8: select dept_num.dept_name\n        ^\n\nTest Failed: Second sequence is not a list: False\n",
+            "status": "passed",
             "visibility": "visible",
-            "number": "1. Department Instructors"
+            "number": "1. Department Census"
         },
         {
-            "name": "test_2 (test_demo.TestCaseName)",
-            "score": 0.0,
+            "name": "test_Query2 (test_HW1.Assigment1)",
+            "score": 1,
             "max_score": 1,
-            "status": "failed",
-            "output": "Test Failed: Lists differ: [{'title': 'Embedded Systems', 'count': 980}] != [{'title': 'The Beatles', 'count': 307}, {'title': 'N[3174 chars]599}]\n\nFirst differing element 0:\n{'title': 'Embedded Systems', 'count': 980}\n{'title': 'The Beatles', 'count': 307}\n\nSecond list contains 72 additional elements.\nFirst extra element 1:\n{'title': 'Numerical Methods', 'count': 264}\n\nDiff is 3597 characters long. Set self.maxDiff to None to see it. : query incorrect\n",
-            "visibility": "visible",
-            "number": "2. Course Popularity"
+            "status": "passed",
+            "visibility": "hidden",
+            "number": "2. Popularity Contest"
         },
         {
-            "name": "test_3 (test_demo.TestCaseName)",
-            "score": 0.0,
+            "name": "test_Query3 (test_HW1.Assigment1)",
+            "score": 1,
             "max_score": 1,
-            "status": "failed",
-            "output": "Test Failed: Incorrect number of queries in file. Expected:3, Found:2\n",
+            "status": "passed",
             "visibility": "visible",
-            "number": "3. Instructing Time"
+            "number": "3. Hardworking"
         }
     ],
     "leaderboard": [],
-    "execution_time": "0.04",
-    "score": 0.0
+    "visibility": "visible",
+    "execution_time": "0.10",
+    "score": 3
 }
