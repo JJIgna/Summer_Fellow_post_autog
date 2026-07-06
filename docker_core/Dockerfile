@@ -54,7 +54,7 @@ ENV PRIV_SET=""
 
 # this is the name of the file that is given to pg_restore
 # set to "" to disable automatic DB building
-ENV DB_BUILD="build"
+ENV DB_BUILD="uni_db_archive"
 
 # copy autograder files
 COPY run_autograder /autograder/run_autograder
