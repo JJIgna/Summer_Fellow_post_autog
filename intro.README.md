@@ -28,6 +28,12 @@ There are also two other `Markdown` files :
 2. `troubleshooting` 
    * a few troubleshooting notes
 
+Required Packages:
+* `psycopg`
+* `gradescope-utils`
+* `timeout-decorator`
+
+
 Have fun. Happy Testing.
 
 ## _Jai-Jai Ignac_

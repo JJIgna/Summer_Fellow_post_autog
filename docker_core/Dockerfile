@@ -35,7 +35,7 @@ COPY --chmod=0600 .pgpass /root/
 # These varibles are call in places where they are needed
 # This means they only need to be set here
 
-ENV HW_NAME="submission.sql"
+ENV HW_NAME="hw1.sql"
 ENV GOLD_FILE="goldfile.sql"
 
 # number of HW solutions or number of problems

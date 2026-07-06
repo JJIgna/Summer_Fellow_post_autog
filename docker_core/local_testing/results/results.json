@@ -1,32 +1,16 @@
 {
     "tests": [
         {
-            "name": "test_Query1 (test_HW1.Assigment1)",
+            "name": "test_Query1 (test_hw1.TestCaseName)",
             "score": 1,
             "max_score": 1,
             "status": "passed",
             "visibility": "visible",
-            "number": "1. Department Census"
-        },
-        {
-            "name": "test_Query2 (test_HW1.Assigment1)",
-            "score": 1,
-            "max_score": 1,
-            "status": "passed",
-            "visibility": "hidden",
-            "number": "2. Popularity Contest"
-        },
-        {
-            "name": "test_Query3 (test_HW1.Assigment1)",
-            "score": 1,
-            "max_score": 1,
-            "status": "passed",
-            "visibility": "visible",
-            "number": "3. Hardworking"
+            "number": "2"
         }
     ],
     "leaderboard": [],
     "visibility": "visible",
-    "execution_time": "0.10",
-    "score": 3
+    "execution_time": "0.03",
+    "score": 1
 }

@@ -1,5 +1,10 @@
 ## Trouble Shooting and Common Errors
 
+### Required Packages
+* `psycopg`
+* `gradescope-utils`
+* `timeout-decorator`
+
 ### False negative
 * The simplest thing that can cause a false negative is sql in the wrong order. Make sure sql statements are in the same order 
 in the gold and student files. 
