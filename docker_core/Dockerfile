@@ -39,7 +39,7 @@ ENV HW_NAME="hw1.sql"
 ENV GOLD_FILE="goldfile.sql"
 
 # number of HW solutions or number of problems
-ENV SOL_NUM="3"
+ENV SOL_NUM="1"
 
 # These variables work in tandum to allow you select which database and under
 #   which user you would like to connect to

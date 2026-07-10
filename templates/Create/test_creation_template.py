@@ -8,7 +8,7 @@ The main differences are running the creation file and checking the crated db.
 import unittest
 from gradescope_utils.autograder_utils.decorators import weight, number
 from subprocess import run
-from test_kit import SQLTaker
+from test_kit.SQL_taker import SQLTaker
 import os
 import psycopg
 

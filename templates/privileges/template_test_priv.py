@@ -5,7 +5,7 @@ This is a template file for testing privileges
 # imports should look familiar
 import unittest
 from gradescope_utils.autograder_utils.decorators import weight, number
-from test_kit import SQLTaker
+from test_kit.SQL_taker import SQLTaker
 import os
 
 # Class and function def should look familiar

@@ -1,16 +1,16 @@
 {
     "tests": [
         {
-            "name": "test_Query1 (test_hw1.TestCaseName)",
+            "name": "test_Query1 (test_HW.TestCaseName)",
             "score": 1,
             "max_score": 1,
             "status": "passed",
             "visibility": "visible",
-            "number": "2"
+            "number": "1"
         }
     ],
     "leaderboard": [],
     "visibility": "visible",
-    "execution_time": "0.03",
+    "execution_time": "0.04",
     "score": 1
 }
