@@ -19,8 +19,13 @@ fi
 # move assignment file into source so it is accessible by run_test
 cp /autograder/submission/"$HW_NAME" /autograder/source/"$HW_NAME"
 
-# move into appropriate directory for testing
-cd /autograder/source
+# create unpriviliged user
+useradd -m -s /bin/bash pte
+mv /root/.pgpass /home/pte/.pgpass
+chown pte:pte /home/pte/.pgpass
+chown pte:pte $HW_NAME
+chown pte:pte $GOLD_FILE
 
+ 
 # run testing script
-python3 run_test.py
+sudo --preserve-env=DB_USER,DB_NAME,HW_NAME,GOLD_FILE,SOL_NUM -u pte HOME=/home/pte python3 run_test.py
