@@ -6,8 +6,8 @@
 
 ### `Query_Taker(path)`
 
-`Query_taker` is the `.sql` parsing and executing class. A `Query_taker` instance take a `.sql` file with a CRUD statements.
-The statements are executed in order and once each. Psycopg is the package used to connect and access a given database.
+`Query_taker` is the `.sql` parsing and executing class. A `Query_taker` instance take a `.sql` file with CRUD statements.
+The statements are executed in order and only once. Psycopg is the package used to connect and access a given database.
 
 #### Attributes:
 
@@ -44,16 +44,14 @@ Returns:
 
 Parameters:
 * `manage`
-  * boolean marking if the statement to be executed is a management statement. these are none `SELECT` statements and do not 
-give rows.
+  * boolean marking if the statement to be executed is a management statement. these are not `SELECT` statements and do not give rows.
 * `user`
   * set the user that will be used to access the database. if left blank, the default user will be used.
 * `db`
   * set the database that will be connected to. if left blank, the default will be used.
 
 Returns:
-* when `manage` is `False`, `execute_next` will return all the rows of the executed query as a list. When `True`, it will return `True` on 
-a successful execution.
+* when `manage` is `False`, `execute_next` will return all the rows of the executed query as a list. When `True`, it will return `True` on a successful execution.
 
 ---
 
@@ -62,10 +60,9 @@ a successful execution.
 of `smart_parse.__next__()` and grabs errors returned from `execute_next`. If `self.done` is `True`, all subsequent calls 
 will raise `IncorrectQueryAmountError`
 
-Parameters: These are the same parameters as `execute_next` are simply pasted on to `execute_next`.
+Parameters: These are the same parameters as `execute_next` and are simply passed on to `execute_next`.
 * `manage`
-  * boolean marking if the statement to be executed is a management statement. these are none `SELECT` statements and do not 
-give rows.
+  * boolean marking if the statement to be executed is a management statement. these are not `SELECT` statements and do not give rows.
 * `user`
   * set the user that will be used to access the database. if left blank, the default user will be used.
 * `db`
@@ -90,6 +87,3 @@ Expresses that an incorrect number of statements exist in an `.sql` file for a g
 
 `found`
 : the number of statements that would found.
-
-
-

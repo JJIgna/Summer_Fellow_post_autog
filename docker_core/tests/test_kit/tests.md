@@ -48,22 +48,18 @@ This example is for READ tests.
 Before we move on to each selection, I want to quickly note why these files have this structure and how to name them, as 
 they are related. 
 
-These files are built using `unittest`, an object-oriented Python testing package. It defines a class `TestCase` makes a set 
-of test cases. The individual tests are defined as functions. This comes with some important conventions.
-1. The files must have `test_` in the beginning. This is how `unittest` knows the file has a `TestCase`. __Files names can not__
-__contain special characters__.
+These files are built using `unittest`, an object-oriented Python testing package. It defines a class `TestCase` that defines a set 
+of test cases. The individual test cases are defined as functions. This comes with some important conventions.
+1. The files must have `test_` in the beginning. This is how `unittest` knows the file has a `TestCase`. __Files names can not contain special characters__.
 2. Though the class doesn't have any naming conventions, it must inherit the `TestCase` class.
 3. Each test case in the class must have `test_` in the beginning of its name, much like the file.
-4. Tests run in alphabetical order using their names. This is very important as the nature of the PTE makes the tests order
-sensitive. So, __make sure the name of the tests reflect their order so they run correctly.__ This is not as important for READ tests
-because as long as the student file and gold file are always executed at the same time, it will check correctly just under the wrong test name.
-_However_, this is major concern for management test that have hardcode keys. So, __make sure the name of the tests reflect their order so they run correctly.__
+4. Tests run in alphabetical order using their names. This is very important as the nature of the PTE makes the tests order-sensitive. So, __make sure the name of the tests reflect their order so they run correctly.__ This can be done by giving each test case a number in its name. Make sure to give these numbers a leading zero if there are a multi-digit amount of tests. This is not as important for READ tests because as long as the student file and gold file are always executed at the same time, it will check correctly just under the wrong test name. _However_, this is major concern for management test that have hardcode keys. So, __make sure the name of the tests reflect their order so they run correctly.__
 
 ---
 
 ## Setup
 
-The main things that will be setup are `SQLTaker` instances for the gold and or student files. We want these as class varibles 
+The main things that will be setup are `SQLTaker` instances for the gold and or student files. We want these as instances varibles 
 so they can be accessed bt each test. `unittest` does have `setUp` and `tearDown` as builtins, but they run for every test
 are therefore not useful for testing up our `SQLTaker` instances.
 
@@ -95,13 +91,13 @@ The PTE makes use of four decorators. Three are from Gradescope's `autograder_ut
 These all come form the official Gradescope documentation.
 
 `@timeout`
-: Sets a timeout timer for the given number of seconds. If runs longer than the timer, the test case is failed.
+: Sets a timeout timer for the given number of seconds. If the test runs longer than the timer, the test case is failed.
 
 ---
 
 ## Value_Collection
 
-This is where the output from a `SQLTaker` or Psycopg function is collected. When collected from both a student and a gold 
+This is where the output from a `SQLTaker` or Psycopg function is collected. When collecting from both a student and a gold 
 file, call the gold file frist. This way if any error occurs when calling the student file and the whole test raises, the gold file 
 will still iterate and the following tests will proceed normally.
 
@@ -109,8 +105,7 @@ will still iterate and the following tests will proceed normally.
 
 ## Assert
 
-Here is where the answer check is made using the `unittest` `self.assert`. There are many `aseert` statements. There are four 
-used for the PTE:
+Here is where the answer check is made using the `unittest` `self.assert`. There are four used for the PTE:
 
 `assertEqual`
 : This checks using ==. This used when checking against a hardcode key. The output from `SQLTaker` will need to be converted

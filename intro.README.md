@@ -4,12 +4,9 @@
 ---
 
 Hello,  
-This is the project directory for the PostgreSQL Testing Environment (PTE). This directory contains all the needed files 
-and information to run the PTE through Gradescope using Docker. The PTE was created by me as a St. Lawrence University Fellows Summer
-Research Project (SLUFSRP). It was created to be used in CS345 Database Systems and Security to assist in teaching and 
-learning PostgreSQl.
+This is the project directory for the PostgreSQL Testing Environment (PTE). This directory contains all the needed files and information to run the PTE through Gradescope using Docker. The PTE was created by me as a SLU Fellow Project during the summer of 2026. It was created to be used in Database Systems and Security to assist in teaching and learning PostgreSQl and Database concepts.
 
-The PTE (currently) makes use of Gradescope's Autograder infrastructure to run. It uses a modified Autograder base image setup 
+The PTE (currently) makes use of Gradescope's infrastructure to run. It uses a modified Gradescope base image setup 
 to run a local PostgreSQL database to test all parts of the DDL and DML. DB connection is done through Psycopg, a Python package
 designed to work with PostgreSQL.
 

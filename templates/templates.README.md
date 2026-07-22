@@ -1,6 +1,6 @@
 ## Templates
 
-This directory contains all the template, example, and set up files for all support testing methods. This documents will 
+This directory contains all the templates, examples, and set up files for all support testing methods. This document will 
 provide How-Tos for each supported testing method.
 
 | Table of Contents               |
@@ -15,7 +15,7 @@ provide How-Tos for each supported testing method.
 
 ### READ
 
-This is the most basic of testing methods. This method is used when only testing queries or the READ part of CRUD. 
+This is the most basic of testing methods. This method is used when only testing the READ part of CRUD. 
 The gold file is a `.sql` and the student file is a `.sql` as well. Both contain answers to the assigned questions and 
 both are expected to get rows. The rows from the gold file are used to check the rows from the student file. 
 
@@ -53,7 +53,7 @@ This structure continues through the rest of the testing methods.
 
 ### UPDATE-DELETE
 
-These to parts of CRUD are tested together as they do something similar to the database: data is changed in some way. This 
+These parts of CRUD are tested together as they perform similar actions to the database: data is changed in some way. This 
 method also incorporates insert statements as they can all be tested the same way.
 
     # imports
@@ -128,7 +128,7 @@ desired results from the student file. The key for these results is hard coded t
 
 ### CREATE
 
-This testing method using a gold `.sql` file and a student `.sql` file. The student file contains SQL statements that create 
+This testing method uses a gold `.sql` file and a student `.sql` file. The student file contains SQL statements that create 
 a database, create a table, and then populate that table. The gold file contains READ statements that check the contents of
 the table. Other tests are performed within the structure of the test itself.
 
@@ -189,7 +189,7 @@ to avoid needing a gold database for the test.
 ### Privileges
 
 This method tests the creation of users/roles and the granting/revoking of privileges. It takes a student `.sql` file containing
-SQL statements for user management and a gold file for testing the users and their privileges.
+SQL statements for user management and a gold `.sql` file for testing the users and their privileges.
 
     import unittest
     from gradescope_utils.autograder_utils.decorators import weight, number, visibility
@@ -200,7 +200,7 @@ SQL statements for user management and a gold file for testing the users and the
         gold = SQLTaker(os.getenv('GOLD_FILE'))
         stu = SQLTaker(os.getenv('HW_NAME'))
 
-The imports and setup have seen before
+The imports and setup are simliar to read
 
     @number(1)
     @weight(1)

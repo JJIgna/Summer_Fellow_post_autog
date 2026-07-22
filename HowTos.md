@@ -40,19 +40,19 @@ You should have an idea of what you want to test. Your exact questions will be y
 This step can go two different ways: Query questions and Management questions.
 
 READ test gold files are simple. Write the queries that give the correct answers to the questions in the assignment.
-put these in a `.sql` file with smart comments like a student would.
+Put these in a `.sql` file with smart comments like a student would.
 
 CREATE, UPDATE, and DELETE tests take a bit more planning. You need to write queries that test the structure of the database or 
 the data. This means quering rows of newly added or deleted data. Attempting to connect to new databases. Connecting to the DB 
 as different users to test their privileges. Whatever you are asking the students to do, you need to write queires that test wheter the
-students code had the correct effects. 
+student's code had the correct effects. 
 
 ---
 
 ## How To Make A `test_*.py`
 
 #### Step 1: Select Template
-Select the template file that fit your current suite. It will be properly formated and ready for you to copy|paste the test cases.
+Select the template file that fit your current suite. It will be properly formated and ready for you to copy-paste the test cases.
 
 #### Step 2: Fill out the test cases
 This will change depending on what you are testing. READ tests will be arranged in the order of the questions. 

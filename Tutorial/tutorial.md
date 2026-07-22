@@ -41,11 +41,11 @@ Now we add them to a `.sql` file. Let's call it `goldWhere.sql` It looks like th
     FROM advisor
     WHERE i_id = '59795';
 
-Notice the `--@_@--` before the queries. These are needed always needed in any gold file that is a `.sql`. 
+Notice the `--@_@--` before the queries. These are always needed in any gold file that is a `.sql`. 
 
 #### 'test_*.py'
 Now let's move to the `test_*.py`. We will call ours `test_where.py`. We will use the `query_HW_template.py` from `Read`.
-We don't need to change any of the imports or class setup and thus will leave them as is. Let configure our tests:
+We don't need to change any of the imports or class setup and thus will leave them as is. Let's configure our tests:
 
     @weight(1)              # question is worth 1 point
     @number("1")            # this is problem #1  
@@ -75,7 +75,7 @@ We don't need to change any of the imports or class setup and thus will leave th
         self.assertListEqual(out, true)
 
 Remember that functions named `test_*` are treated as test cases. So we name each function based on which question it is testing. 
-Remember as well, __tests run in alphabetical order.__ So we give each name a number to make sure they run in the correct order.
+Remember as well, __tests run in alphabetical order.__ So we give each name a number to make sure they run in the correct order. __When testing more than 10 queries, remember to add a leading zero to all queries names.__
 Each question is worth 1 point so `@weight` is set to 1. We increment `@number` to reflect the order of the tests. We'll leave
 `@visibility` on visible as we want to students to see the results. Finally, we'll leave `@timeout` at 5 seconds. The rest of the
 function will run our test cases as we want them, so we're done here.
@@ -88,13 +88,13 @@ so we'll use those. We'll move `goldWhere.sql`, `build`, and `dbUserSet.sql` int
     ENV HW_NAME="where.sql"         # name of student submission 
     ENV GOLD_FILE="goldWhere.sql"   # name of gold file prof wrote
 
-    ENV SOL_NUM="3"                 # expect number of solution in HW_NAME
+    ENV SOL_NUM="3"                 # expect number of solutions in HW_NAME
 
     # default is fine for now
-    ENV DB_USER="testee"            # default user that will be to connect to database
+    ENV DB_USER="testee"            # default user that will be used to connect to database
     ENV DB_NAME="testee"            # default database that will be connected to
 
-    ENV DB_USER_SET="dbUserSet.sql" # sql will run with DB_USER DB_NAME 
+    ENV DB_USER_SET="dbUserSet.sql" # set the users that will be used for testing
 
     ENV PRIV_SET=""                 # set privileges for users
 
@@ -133,13 +133,13 @@ Let's run one more test to make sure the PTE is working correctly. We'll edit `w
     FROM advisor
     WHERE i_id = '59795';
 
-The operator in the frist query has been flipped around and the = from the second query has been removed. 
+The operator in the frist query has been flipped around and the `=` from the second query has been removed. 
 Let's run `docker compose run --rm -it native bash` and `../run_autograder ; cat ../results/results.json` again and see 
 what we get:
 
 ![test with erros](images/test-with-errors.png)
 
-The frist two test cases fail and the one succeeds. The PTE is working fine. Time to give it to Gradescope.
+The frist two test cases fail and the last one succeeds. The PTE is working fine. Time to give it to Gradescope.
 
 #### Gradescope
 
