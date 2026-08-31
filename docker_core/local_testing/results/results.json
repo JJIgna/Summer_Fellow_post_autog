@@ -1,7 +1,7 @@
 {
     "tests": [
         {
-            "name": "test_Query1 (test_HW.TestCaseName)",
+            "name": "test_Query1 (test_hw1.TestCaseName)",
             "score": 1,
             "max_score": 1,
             "status": "passed",
