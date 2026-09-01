@@ -5,7 +5,7 @@ This is the example file for testing db creation
 import unittest
 from gradescope_utils.autograder_utils.decorators import weight, number
 from subprocess import run
-from test_kit import SQLTaker
+from test_kit.SQL_taker import SQLTaker
 import os
 import psycopg
 

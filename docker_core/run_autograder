@@ -3,6 +3,9 @@
 # This is file is require by gradescope.
 # This is the start of the autograder.
 
+# THIS MUST BE ENCODED WITH LF
+# *NOT* CRLF
+
 # start up database for testing.
 #   (may move to its own file later)
 su - postgres -c 'pg_ctlcluster 18 main start'
@@ -19,13 +22,8 @@ fi
 # move assignment file into source so it is accessible by run_test
 cp /autograder/submission/"$HW_NAME" /autograder/source/"$HW_NAME"
 
-# create unpriviliged user
-useradd -m -s /bin/bash pte
-mv /root/.pgpass /home/pte/.pgpass
-chown pte:pte /home/pte/.pgpass
-chown pte:pte $HW_NAME
-chown pte:pte $GOLD_FILE
+# move into appropriate directory for testing
+cd /autograder/source
 
- 
 # run testing script
-sudo --preserve-env=DB_USER,DB_NAME,HW_NAME,GOLD_FILE,SOL_NUM -u pte HOME=/home/pte python3 run_test.py
+python3 run_test.py

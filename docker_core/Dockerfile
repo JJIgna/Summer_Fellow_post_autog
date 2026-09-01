@@ -8,7 +8,9 @@
 # base image
 FROM gradescope/autograder-base:ubuntu-22.04
 
-USER root
+# base directory
+# this sets the working directory
+WORKDIR /autograder/source
 
 # installing python
 RUN apt-get install -y python3 python3-pip
@@ -26,10 +28,6 @@ RUN curl -o /usr/share/postgresql-common/pgdg/apt.postgresql.org.asc --fail http
 COPY pgdg.sources /etc/apt/sources.list.d/
 RUN apt update
 RUN apt install -y postgresql-18
-
-# install sudo
-RUN apt-get install sudo
-
 # set up .pgass file for the user created in dbsetup to assist with pg_restore
 COPY --chmod=0600 .pgpass /root/
 
@@ -49,7 +47,7 @@ ENV DB_USER="testee"
 ENV DB_NAME="testee"
 
 # .sql file that sets up a defualt user
-ENV DB_USER_SET="dbUserSet.sql"
+ENV DB_USER_SET="dbUserSet_READ.sql"
 
 # .sql file that contains statements for setting up user privileges
 ENV PRIV_SET=""
@@ -57,12 +55,6 @@ ENV PRIV_SET=""
 # this is the name of the file that is given to pg_restore
 # set to "" to disable automatic DB building
 ENV DB_BUILD="uni_db_archive"
-
-
-# base directory
-# this sets the working directory
-WORKDIR /autograder/source
-
 
 # copy autograder files
 COPY run_autograder /autograder/run_autograder
