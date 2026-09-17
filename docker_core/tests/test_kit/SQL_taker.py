@@ -1,11 +1,13 @@
+import os
+
 import psycopg
 from psycopg.rows import dict_row
-import os
-from test_kit.wrong_number import IncorrectStatementAmountError
 
+from test_kit.wrong_number import IncorrectStatementAmountError
 
 # Query Taker class
 #   used when testing .sql files or when using .sql files
+
 
 class SQLTaker:
     def __init__(self, path):
@@ -24,7 +26,6 @@ class SQLTaker:
         # start of parser
         with open(self.path) as q:
             while c := q.read(1):
-
                 # look for start sm
                 if c == "@":
                     # take in next two characters
@@ -36,7 +37,7 @@ class SQLTaker:
                             # if found sm and collecting, we have encountered sm before
                             # must be at end of one query and star of a new one
                             # concat and yield current query before beginning the next one
-                            yield ''.join(buff)
+                            yield "".join(buff)
                             self.num += 1
                             buff.clear()
                             continue
@@ -55,7 +56,7 @@ class SQLTaker:
         # so build and yield
         self.done = True
         self.num += 1
-        yield ''.join(buff)
+        yield "".join(buff)
 
     def execute_next(self, manage=False, user="", db=""):
         if user != "":
@@ -63,11 +64,13 @@ class SQLTaker:
         else:
             username = os.getenv("DB_USER")
         if db != "":
-            dbname =  db
+            dbname = db
         else:
             dbname = os.getenv("DB_NAME")
         # establish connection
-        with psycopg.connect("postgresql://" + username + "@localhost/" + dbname) as conn:
+        with psycopg.connect(
+            "postgresql://" + username + "@localhost/" + dbname
+        ) as conn:
             with conn.cursor(row_factory=dict_row) as cur:
                 # run query
                 cur.execute(self.run.__next__())
@@ -78,7 +81,7 @@ class SQLTaker:
 
     def next_sql(self, manage=False, user="", db=""):
         if self.done:
-            raise IncorrectStatementAmountError(os.getenv('SOL_NUM'), str(self.num))
+            raise IncorrectStatementAmountError(os.getenv("SOL_NUM"), str(self.num))
         try:
             return self.execute_next(manage=manage, user=user, db=db)
         except Exception as e:

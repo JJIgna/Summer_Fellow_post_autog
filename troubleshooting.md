@@ -19,3 +19,6 @@ file. If the password is not in the .pgpass file then psycopg will be able to co
 
 ### Test Case Names
 Make sure each test case has a distinctive name. If two test cases have the same name, `unittest` will treat them as one test. 
+
+### 'bash/r'
+Change the encoding of `run_autograder` from CRLF to LF.
